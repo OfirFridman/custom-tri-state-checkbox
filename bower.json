@@ -1,0 +1,19 @@
+{
+  "name": "custom-tri-state-checkbox",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ofir fridman"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/OfirFridman/custom-tri-state-checkbox",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

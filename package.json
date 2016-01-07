@@ -1,0 +1,19 @@
+{
+  "name": "custom-tri-state-checkbox",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OfirFridman/custom-tri-state-checkbox.git"
+  },
+  "author": "ofir fridman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OfirFridman/custom-tri-state-checkbox/issues"
+  },
+  "homepage": "https://github.com/OfirFridman/custom-tri-state-checkbox#readme"
+}
