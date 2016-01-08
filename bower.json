@@ -15,5 +15,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.4.8",
+    "custom-checkbox": "https://github.com/OfirFridman/custom-checkbox.git"
+  }
 }
