@@ -1,0 +1,16 @@
+@import "../../bower_components/custom-checkbox/dist/styles/custom-checkbox.min.css";
+$black-color: black;
+
+input[type="checkbox"][custom-tri-state-checkbox]{
+
+  &:indeterminate + label::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.7);
+    background-color: $black-color;
+  }
+}
+
+
