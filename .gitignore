@@ -3,4 +3,9 @@
 *.iml
 out
 gen
+
+# bower
 bower_components
+
+# node
+node_modules

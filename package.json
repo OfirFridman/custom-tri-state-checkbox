@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/OfirFridman/custom-tri-state-checkbox/issues"
   },
-  "homepage": "https://github.com/OfirFridman/custom-tri-state-checkbox#readme"
+  "homepage": "https://github.com/OfirFridman/custom-tri-state-checkbox#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
