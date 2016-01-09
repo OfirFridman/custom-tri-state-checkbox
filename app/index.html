@@ -5,19 +5,19 @@
     <title></title>
     <link rel="stylesheet" href="css/custom-tri-state-checkbox.css"/>
 </head>
-<body>
+<body ng-controller="demoCtrl as vm">
 
-<input ng-init="parent={selected:true}" ng-model="parent.selected" type="checkbox" id="tri" custom-checkbox custom-tri-state-checkbox label="Parent" />
+<input ng-model="vm.parentCheckboxSelected" type="checkbox" id="tri" custom-checkbox custom-tri-state-checkbox label="Parent" />
 <hr/>
 
 <custom-tri-state-group-checkbox>
-    <div ng-repeat="cb in [{name:'c1'},{name:'c2'},{name:'c3'}]">
+    <div ng-repeat="cb in vm.childCheckboxes">
         <input
             type="checkbox"
             custom-checkbox
-            id="{{::cb.name}}"
+            id="{{::cb.id}}"
             label="{{::cb.name}}"
-            ng-checked="parent.selected"/>
+            ng-checked="vm.parentCheckboxSelected"/>
     </div>
 </custom-tri-state-group-checkbox>
 
@@ -28,5 +28,6 @@
 <script src="app.js"></script>
 <script src="scripts/directives/customTriStateCheckbox.js"></script>
 <script src="scripts/directives/customTriStateGroupCheckbox.js"></script>
+<script src="scripts/controlers/controller.js"></script>
 </body>
 </html>

@@ -38,6 +38,7 @@
     };
 
     CustomTriStateGroupCheckboxCtrl.prototype.listenToEvents = function () {
+        //TODO check how to stop the call more then once for each click on child checkbox
         var vm = this;
         vm.$element.on('click', function () {
             vm.$scope.$root.$broadcast('update-parent-tri-state-checkbox');
