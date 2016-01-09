@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html ng-app="custom-tri-state-checkbox">
-<head lang="en" >
+<head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/custom-tri-state-checkbox.css"/>
 </head>
 <body>
 
-<input type="checkbox" id="tri" custom-tri-state-checkbox/>
+<input ng-init="parent={selected:true}" ng-model="parent.selected" type="checkbox" id="tri" custom-checkbox custom-tri-state-checkbox label="Parent" />
+<hr/>
+
+<custom-tri-state-group-checkbox>
+    <div ng-repeat="cb in [{name:'c1'},{name:'c2'},{name:'c3'}]">
+        <input
+            type="checkbox"
+            custom-checkbox
+            id="{{::cb.name}}"
+            label="{{::cb.name}}"
+            ng-checked="parent.selected"/>
+    </div>
+</custom-tri-state-group-checkbox>
+
+
 
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/custom-checkbox/dist/scripts/main.js"></script>
 <script src="app.js"></script>
 <script src="scripts/directives/customTriStateCheckbox.js"></script>
+<script src="scripts/directives/customTriStateGroupCheckbox.js"></script>
 </body>
 </html>
