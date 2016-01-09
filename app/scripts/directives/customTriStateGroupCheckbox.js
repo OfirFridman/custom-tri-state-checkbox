@@ -15,12 +15,14 @@
             link: linker,
             controller: CustomTriStateGroupCheckboxCtrl,
             controllerAs: 'customTriStateGroupCheckbox',
-            bindToController: true
+            bindToController: {
+                childCheckboxes: "="
+            },
+            scope: {}
         };
 
         function linker(scope, element, attrs, controller) {
             controller.init();
-
         }
     }
 
@@ -38,10 +40,15 @@
     };
 
     CustomTriStateGroupCheckboxCtrl.prototype.listenToEvents = function () {
-        //TODO check how to stop the call more then once for each click on child checkbox
         var vm = this;
-        vm.$element.on('click', function () {
-            vm.$scope.$root.$broadcast('update-parent-tri-state-checkbox');
+        vm.$element.on('click', function (event) {
+            if(event.srcElement.hasAttribute('custom-checkbox')){
+                var data = {
+                    childCheckboxes: vm.childCheckboxes,
+                    checkedNameAs:"selected"
+                };
+                vm.$scope.$root.$broadcast('update-parent-tri-state-checkbox',data);
+            }
         });
     };
-})();
+    })();

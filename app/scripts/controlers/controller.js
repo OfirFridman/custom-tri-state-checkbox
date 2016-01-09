@@ -8,20 +8,18 @@
         .module('custom-tri-state-checkbox')
         .controller('demoCtrl', Demo);
 
-    function Demo(){
+    function Demo() {
         var vm = this;
         vm.init();
     }
 
-    Demo.prototype.init = function(){
+    Demo.prototype.init = function () {
         var vm = this;
         vm.parentCheckboxSelected = true;
         vm.childCheckboxes = [];
-        for (var i = 0; i < 5; i++) {
-            vm.childCheckboxes.push({name:"checkbox"+i,id:"cb"+i});
+        for (var i = 0; i < 1000; i++) {
+            vm.childCheckboxes.push({name: "checkbox" + i, id: "cb" + i, selected: true});
         }
-
-
     };
 
 })();

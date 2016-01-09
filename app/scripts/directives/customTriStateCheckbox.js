@@ -57,15 +57,39 @@
         vm.listnerUpdateParentTriStateCheckbox = vm.$scope.$on('update-parent-tri-state-checkbox', vm.updateParentTriStateCheckbox.bind(vm));
     };
 
-    CustomTriStateCheckboxCtrl.prototype.updateParentTriStateCheckbox = function () {
+    CustomTriStateCheckboxCtrl.prototype.updateParentTriStateCheckbox = function (event, dataChildCheckboxes) {
         var vm = this;
-        vm.$element.prop('indeterminate', true);
+        var childCheckboxes = dataChildCheckboxes.childCheckboxes;
+        var checkedNameAs = dataChildCheckboxes.checkedNameAs;
+
+        var selectedCheckBoxes = [];
+        childCheckboxes.forEach(function(checkbox){
+            if(checkbox[checkedNameAs]){
+                selectedCheckBoxes.push(true);
+            }
+        });
+
+       if(selectedCheckBoxes.length === childCheckboxes.length){
+           vm.$element.checked = true;
+           vm.$element.prop('indeterminate', false);
+
+       }
+       else if(selectedCheckBoxes.length === 0){
+           vm.$element.checked = false;
+           vm.$element.prop('indeterminate', false);
+       }
+        else{
+           vm.$element.prop('indeterminate', true);
+       }
+
     };
 
     CustomTriStateCheckboxCtrl.prototype.listenToDestroy = function () {
         var vm = this;
         vm.$scope.$on("$destroy", function () {
-            vm.listnerUpdateParentTriStateCheckbox();
+            if(vm.listnerUpdateParentTriStateCheckbox){
+                vm.listnerUpdateParentTriStateCheckbox();
+            }
         });
     };
 

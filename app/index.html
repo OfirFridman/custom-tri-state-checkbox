@@ -10,13 +10,14 @@
 <input ng-model="vm.parentCheckboxSelected" type="checkbox" id="tri" custom-checkbox custom-tri-state-checkbox label="Parent" />
 <hr/>
 
-<custom-tri-state-group-checkbox>
-    <div ng-repeat="cb in vm.childCheckboxes">
+<custom-tri-state-group-checkbox style="display: table" child-checkboxes="vm.childCheckboxes">
+    <div ng-repeat="cb in vm.childCheckboxes track by cb.id" style="display: table">
         <input
             type="checkbox"
             custom-checkbox
             id="{{::cb.id}}"
             label="{{::cb.name}}"
+            ng-model="cb.selected"
             ng-checked="vm.parentCheckboxSelected"/>
     </div>
 </custom-tri-state-group-checkbox>
