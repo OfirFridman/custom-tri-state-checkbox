@@ -1,9 +1,7 @@
 /**
  * Created by ofir on 1/9/2016.
  */
-/**
- * Created by ofir on 1/8/2016.
- */
+
 (function () {
     'use strict';
 
@@ -11,16 +9,38 @@
         .module('custom-tri-state-checkbox')
         .directive('customTriStateGroupCheckbox', customTriStateGroupCheckbox);
 
-    function customTriStateGroupCheckbox(){
+    function customTriStateGroupCheckbox() {
         return {
             restrict: 'EA',
-            link: link
+            link: linker,
+            controller: CustomTriStateGroupCheckboxCtrl,
+            controllerAs: 'customTriStateGroupCheckbox',
+            bindToController: true
         };
 
-        function link(scope, element, attrs, controllers){
-            element.on('click',function(){
-                scope.$root.$broadcast('update-parent-tri-state-checkbox');
-            });
+        function linker(scope, element, attrs, controller) {
+            controller.init();
+
         }
     }
+
+    CustomTriStateGroupCheckboxCtrl.$inject = ['$scope', '$element'];
+
+    function CustomTriStateGroupCheckboxCtrl($scope, $element) {
+        var vm = this;
+        vm.$scope = $scope;
+        vm.$element = $element;
+    }
+
+    CustomTriStateGroupCheckboxCtrl.prototype.init = function () {
+        var vm = this;
+        vm.listenToEvents();
+    };
+
+    CustomTriStateGroupCheckboxCtrl.prototype.listenToEvents = function () {
+        var vm = this;
+        vm.$element.on('click', function () {
+            vm.$scope.$root.$broadcast('update-parent-tri-state-checkbox');
+        });
+    };
 })();
