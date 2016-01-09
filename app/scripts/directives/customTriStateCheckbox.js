@@ -54,9 +54,12 @@
 
     CustomTriStateCheckboxCtrl.prototype.listenToEvents = function () {
         var vm = this;
-        vm.listnerUpdateParentTriStateCheckbox = vm.$scope.$on('update-parent-tri-state-checkbox', function () {
-            vm.$element.prop('indeterminate', true);
-        });
+        vm.listnerUpdateParentTriStateCheckbox = vm.$scope.$on('update-parent-tri-state-checkbox', vm.updateParentTriStateCheckbox.bind(vm));
+    };
+
+    CustomTriStateCheckboxCtrl.prototype.updateParentTriStateCheckbox = function () {
+        var vm = this;
+        vm.$element.prop('indeterminate', true);
     };
 
     CustomTriStateCheckboxCtrl.prototype.listenToDestroy = function () {
